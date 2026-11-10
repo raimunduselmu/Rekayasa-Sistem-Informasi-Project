@@ -1,0 +1,16 @@
+# OPSIONAL: hanya bila tidak memakai SQL Server yang sudah terpasang di komputer.
+# (Image SQL Server berarsitektur x86; di Mac Apple Silicon sebaiknya pakai SQL Server di Windows/VM.)
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: icms-mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+      MSSQL_SA_PASSWORD: "Icms#12345"
+    ports:
+      - "1433:1433"
+    volumes:
+      - icms_mssql:/var/opt/mssql
+volumes:
+  icms_mssql:
